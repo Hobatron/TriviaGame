@@ -1,0 +1,56 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-color:white;
+  }
+  
+  #gameSetup {
+      margin-top: 75px;
+  }
+  
+  
+  #countdown {
+    position: relative;
+    margin: auto;
+    margin-top: 140px;
+    height: 48px;
+    width: 80px;
+    text-align: center;
+  }
+  
+  #countdown-number {
+    color: rgb(34, 122, 156);
+    display: inline-block;
+    position: relative;
+    line-height: 78px;
+    font-size: 30px;
+  }
+  
+  svg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    transform: rotateY(-180deg) rotateZ(-90deg);
+  }
+  
+  svg circle {
+    stroke-dasharray: 230px;
+    stroke-dashoffset: 0px;
+    stroke-linecap: round;
+    stroke-width: 5px;
+    stroke: rgb(34, 122, 156);
+    fill: none;
+    animation: countdown 45s linear infinite forwards;
+    animation-play-state: paused;
+  }
+  
+  @keyframes countdown {
+    from {
+      stroke-dashoffset: 0px;
+    }
+    to {
+      stroke-dashoffset: 230px;
+    }
+  }
