@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
 </head>
 
-<body>
-    <div id="gameSetup" class="container">
+<body class="bg-dark">
+    <div id="gameSetup" class="container text-secondary">
 
         <header>
             <h3>Welcome to my trivia game</h3>
@@ -30,7 +30,7 @@
                     <input type="radio" id="music" name="customRadioInline1" class="custom-control-input">
                     <label class="custom-control-label" for="music">Music</label>
                 </div>
-                <div class="custom-control custom-radio custom-control-inline">
+                <div class="custom-control custom-radio custom-control-inline ">
                     <input type="radio" id="boardGames" name="customRadioInline1" class="custom-control-input">
                     <label class="custom-control-label" for="boardGames">Board games</label>
                 </div>
@@ -58,14 +58,16 @@
             <div class="row">
                 <h5>Please select a difficulty</h5>
             </div>
+
             <div style="padding-top:15px;" class="row btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary">
+                
+                <label class="btn btn-info">
                     <input type="radio" name="difficulty" id="option1" autocomplete="off" checked> Easy
                 </label>
-                <label class="btn btn-secondary">
+                <label class="btn btn-warning">
                     <input type="radio" name="difficulty" id="option2" autocomplete="off"> Medium
                 </label>
-                <label class="btn btn-secondary">
+                <label class="btn btn-danger">
                     <input type="radio" name="difficulty" id="option3" autocomplete="off"> Hard
                 </label>
             </div>

@@ -1,5 +1,5 @@
 var diff = [30,20,10] //TODO: Us jQuery to set css animate && timer****
-var timerOn = true;
+var timerOn = false;
 
 $(document).ready(function () {
     var countdownNumberEl = $('#countdown-number');
