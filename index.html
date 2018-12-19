@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<!-- Loading CSS Files -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css">
 </head>
 
-<body class="bg-dark">
-    <div id="gameSetup" class="container text-secondary">
+<body class="bg-dark" >
+<!-- Game Setup HTML -->
+    <div id="gameSetup" class="container text-light" style="display:none;">
 
         <header>
             <h3>Welcome to my trivia game</h3>
@@ -21,7 +22,7 @@
         </header>
         <br />
 
-        <div class="container-fluid col-md-12">
+        <div class="container-fluid col-md-12" >
             <div class="row">
                 <h5>Please select a catagory</h5>
             </div>
@@ -81,16 +82,32 @@
     </div>
 
 
-
-
-    <div id="countdown" style="display:none">
+<!-- Question Box HTML -->
+<div class="container mx-auto text-light" id="questionBox">
+    <div id="countdown">
         <div id="countdown-number"></div>
         <svg>
             <circle r="37" cx="40" cy="40"></circle>
         </svg>
+        
     </div>
+    <div class="text-center qStyle" id="qNum">Question 1:</div>
+    <div class="text-center qStyle" id="question">This is a sample question</div>
+    
+    <button class="btn ans">Test Answer</button>
+    <button class="btn ans">Test Answer</button>
+    <br />
+    <button class="btn ans">Test Answer</button>
+    <button class="btn ans">Test Answer</button>
+    <br />
+    <button class="btn">Submit</button>
 
 
+
+</div>
+
+<!-- Loading Java files -->
+    <div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -98,6 +115,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script src="assets/javascript/app.js"></script>
+    </div>
 
 </body>
 
