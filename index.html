@@ -14,7 +14,7 @@
 
 <body class="bg-dark">
     <!-- Game Setup HTML -->
-    <div id="gameSetup" class="container text-light" style="display:block;">
+    <div id="gameSetup" class="container text-light">
 
         <header>
             <h3>Welcome to my trivia game</h3>
@@ -28,30 +28,30 @@
                 <h5>Please select a catagory</h5>
             </div>
             <div style="padding-top:10px;" class="row">
-                <div style="padding-right:4px;" id="music" class="custom-control custom-radio custom-control-inline radio">
-                    <input type="radio" name="customRadioInline1" class="custom-control-input">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="music" name="customRadioInline1" class="custom-control-input radio">
                     <label class="custom-control-label" for="music">Music</label>
                 </div>
-                <div id="boardGames" class="custom-control custom-radio custom-control-inline radio">
-                    <input type="radio"  name="customRadioInline1" class="custom-control-input">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="boardGames" name="customRadioInline1" class="custom-control-input radio">
                     <label class="custom-control-label" for="boardGames">Board games</label>
                 </div>
-                <div id="math" class="custom-control custom-radio custom-control-inline radio">
-                    <input type="radio" name="customRadioInline1" class="custom-control-input">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="math" name="customRadioInline1" class="custom-control-input radio">
                     <label class="custom-control-label" for="math">Math</label>
                 </div>
             </div>
             <div style="padding-top:6px;" class="row">
-                <div id="anime" class="custom-control custom-radio custom-control-inline radio">
-                    <input type="radio" name="customRadioInline1" class="custom-control-input">
-                    <label class="custom-control-label" for="anime">Anime</label>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="film" name="customRadioInline1" class="custom-control-input radio">
+                    <label class="custom-control-label" for="film">Film</label>
                 </div>
-                <div id="videoGames" class="custom-control custom-radio custom-control-inline radio">
-                    <input type="radio" name="customRadioInline1" class="custom-control-input">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="videoGames" name="customRadioInline1" class="custom-control-input radio">
                     <label class="custom-control-label" for="videoGames">Video Games</label>
                 </div>
-                <div id="mythos" class="custom-control custom-radio custom-control-inline radio">
-                    <input type="radio" name="customRadioInline1" class="custom-control-input">
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="mythos" name="customRadioInline1" class="custom-control-input radio">
                     <label class="custom-control-label" for="mythos">Mythology</label>
                 </div>
 
@@ -63,13 +63,13 @@
 
             <div style="padding-top:15px;" class="row btn-group btn-group-toggle" data-toggle="buttons">
 
-                <label class="btn btn-info diff" id="option1">
-                    <input type="radio" name="difficulty" id="option1" autocomplete="off" checked> Easy
+                <label class="btn btn-info diff" id="easy">
+                    <input type="radio" name="difficulty" autocomplete="off" checked> Easy
                 </label>
-                <label class="btn btn-warning diff" id="option2">
-                    <input type="radio" name="difficulty" id="option2" autocomplete="off"> Medium
+                <label class="btn btn-warning diff" id="medium">
+                    <input type="radio" name="difficulty" autocomplete="off"> Medium
                 </label>
-                <label class="btn btn-danger diff" id="option3">
+                <label class="btn btn-danger diff" id="hard">
                     <input type="radio" name="difficulty" autocomplete="off"> Hard
                 </label>
             </div>
@@ -84,7 +84,7 @@
 
 
     <!-- Question Box HTML -->
-    <div class="container mx-auto text-light" id="questionBox">
+    <div class="container mx-auto text-light" id="questionBox" style="display:none">
         <div id="countdown">
             <div id="countdown-number"></div>
             <svg>
@@ -92,21 +92,28 @@
             </svg>
         </div>
 
-        <div class="text-center qStyle" id="qNum">Question 1:</div>
-        <div class="text-center qStyle" id="question">This is a sample question</div>
-
-        <button class="btn ans">Test Answer</button>
-        <button class="btn ans lft">Test Answer</button>
+        <div class="text-center qStyle" id="qNum"></div>
+        <div class="text-center qStyle" id="question"></div>
+        <div class="text-center">
+            <button id="0" class="btn ans"></button>
+        </div>
+        <div class="text-center">
+            <button id="1" class="btn ans"></button>
+        </div>
+        <div class="text-center">
+            <button id="2" class="btn ans"></button>
+        </div>
+        <div class="text-center">
+            <button id="3" class="btn ans"></button>
+        </div>
         <br />
-        <button class="btn ans">Test Answer</button>
-        <button class="btn ans lft">Test Answer</button>
-        <br />
-        <button style="margin:20px 0 0 218px" type="button" class="btn">Submit</button>
+        <buttn style="margin:0px 0 0 218px; color:black;" type="button" id="submit" class="btn">Submit</button>
     </div>
 
     <!-- Loading Java files -->
     <div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
             crossorigin="anonymous"></script>
