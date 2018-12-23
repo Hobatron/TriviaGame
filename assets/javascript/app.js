@@ -15,6 +15,7 @@ var currentAns = "";
 var correctAns = "";
 var score = 0;
 var wrong = 10;
+var gameOver = false;
 
 $(document).ready(function () {
 
@@ -32,16 +33,21 @@ $(document).ready(function () {
             + "&difficulty=" + difficulty + "";
         
         $.getJSON(queryURL, function () {})
-        .done(function(results){
+        .done(function (results) {
             if (results.response_code != 1) {
                 question = results;
                 $("#questionBox").fadeIn(200);
                 newQ();
                 $("#gameSetup").toggle();
             } else {
-                alert("error code: 1; not enough questions in cat&diff; please try another.")
-            }
+                alert("error code: 1; not enough questions in cat&diff; please try another.");
+            };
         })
+        .fail(function () {
+            alert("Connection to opentdb failed check console for link");
+            console.log(queryURL);
+        });
+
 
     });
 
@@ -51,21 +57,24 @@ $(document).ready(function () {
     countdownNumberEl.text(countdown);
 
     setInterval(function () {
-        if (!timerOn) {
+        if (timerOn) {
             $("svg circle").css("animation-play-state", "running");
             countdown--;
             countdownNumberEl.text(countdown);
             if (countdown == 0) {
                 timerOn = false;
-                $("svg circle").css("animation-play-state", "paused");
+                $("svg circle").css("display", "none");
                 gameOver();
             }
         }
     }, 1000);
 
     $("#submit").click(function () {
+        if (gameOver == true) {
+            test();
+        }
         if (waiting == true) {
-            console.log(score)
+            currentAns = "";
             waiting = false;
             $(this).text("submit");
             for (var i = 0; i < question.results[(qNum - 1)].incorrect_answers.length + 1; i++) {
@@ -79,9 +88,9 @@ $(document).ready(function () {
                 newQ();
             } else {
                 gameOver();
-            }  
+            }
         }
-        if (currentAns) {
+        if (currentAns && !waiting) {
             if (currentAns == correctAns) {
                 score++;
                 wrong--;
@@ -100,27 +109,28 @@ $(document).ready(function () {
     });
 
     $(".ans").on("click", function () {
-        if (currentAns) {
-            $("#" + currentAns).css("background-color", "rgb(223, 223, 223)")
+        if (!waiting) {
+            if (currentAns) {
+                $("#" + currentAns).css("background-color", "rgb(223, 223, 223)");
+            }
+            currentAns = this.id;
+            $("#" + currentAns).css("background-color", "rgb(173, 173, 173)");
         }
-        currentAns = this.id;
-        $("#" + currentAns).css("background-color", "rgb(173, 173, 173)")
 
     });
 
     function jDecode(str) {
         return $("<div/>").html(str).text();
-    }
+    };
 
     function newQ() {
         timerOn = true;
         var currentQ = question.results[qNum]
         $("#question").html(jDecode(currentQ.question));
         if (currentQ.incorrect_answers.length < 2) {
-            console.log("test")
             $("#2").toggle();
             $("#3").toggle();
-        }
+        };
 
 
         correctAns = Math.floor(Math.random() * currentQ.incorrect_answers.length)
@@ -141,10 +151,22 @@ $(document).ready(function () {
         $("#qNum").text("Question " + qNum + ":");
     }
 
-    function gameOver () { 
-        location.reload()
+    function gameOver () {
+        timerOn = false;
+        for (var i = 0; i < 4 ; i++) {
+            $("#"+i).css("display","none");
+        }
+        var finalScore = (score - wrong) + (countdown * .2);
+        $("#qNum").text("Final Score: "+finalScore + " points");
+        $("#question").text("score breakdown: " + countdown + "s left (.2pnt per), you got " + score + " right and " + wrong + " wrong");
+        gameOver = true
+        if (finalScore > 0) {
+            $("#question").prepend("<div style='color : green'>Congrats on going positive!</div>");
+        }
+        $("#submit").text("Retry");
+
     }
-
+    function test() {
+        location.reload();
+    }
 });
-
-//location.reload()
